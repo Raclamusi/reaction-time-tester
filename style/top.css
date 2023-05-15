@@ -1,0 +1,50 @@
+.setting {
+    margin: 2rem 0;
+}
+
+.setting .title {
+    margin: 1rem 0;
+    font-size: larger;
+}
+
+.setting .options {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.setting .options .option {
+    display: block;
+    margin: 0.5rem 2rem;
+    text-align: left;
+}
+
+.setting .options .option label {
+    display: inline-block;
+    min-width: 7rem;
+}
+
+.setting .options .option input {
+    margin: 0.5rem 1rem 0 2rem;
+    font-size: inherit;
+}
+
+.setting .options .option input[type="number"] {
+    width: 5rem;
+}
+
+.setting .options .option input[type="checkbox"] {
+    transform: scale(2);
+    transform-origin: 0;
+}
+
+.setting .options .option input[type="button"] {
+    min-width: 10rem;
+}
+
+.setting .options .option .nobreak {
+    white-space: nowrap;
+}
+
+.setting .options .option #muteSpan {
+    font-size: smaller;
+}

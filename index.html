@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>反応時間計測</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="いくつかの条件での反応時間を測定、記録します。">
+        <link rel="stylesheet" type="text/css" href="style/common.css">
+        <link rel="stylesheet" type="text/css" href="style/top.css">
+    </head>
+    <body>
+        <main>
+            <div>
+                <h1>反応時間計測</h1>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a class="button" href="measure.html?mode=1">Mode 1</a>
+                    </li>
+                    <li>
+                        <a class="button" href="measure.html?mode=2">Mode 2</a>
+                    </li>
+                    <li>
+                        <a class="button" href="measure.html?mode=3">Mode 3</a>
+                    </li>
+                    <li>
+                        <a class="button" href="measure.html?mode=4">Mode 4</a>
+                    </li>
+                    <li>
+                        <a class="button" href="records.html">記録を見る</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="setting">
+                <div class="title">設定</div>
+                <div class="options">
+                    <div class="option">
+                        <label for="trialsInput">1回の試行回数</label>
+                        <input type="number" id="trialsInput">
+                    </div>
+                    <div class="option">
+                        <label for="muteInput">ミュート</label>
+                        <span class="nobreak">
+                            <input type="checkbox" id="muteInput">
+                            <span id="muteSpan"></span>
+                        </span>
+                    </div>
+                    <div class="option">
+                        <label for="yesKeyInput">Yesキー</label>
+                        <input type="button" id="yesKeyInput">
+                    </div>
+                    <div class="option">
+                        <label for="noKeyInput">Noキー</label>
+                        <input type="button" id="noKeyInput">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script type="module" src="script/top.js"></script>
+    </body>
+</html>

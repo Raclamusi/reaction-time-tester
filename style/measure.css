@@ -1,0 +1,78 @@
+#descriptionP {
+    margin: 3rem 0;
+}
+
+#startButton {
+    width: 15rem;
+    font-size: larger;
+}
+
+#turnSpan {
+    font-size: larger;
+}
+
+#printDiv {
+    height: 6rem;
+    margin: 1rem 0;
+    font-size: 4rem;
+}
+
+#printDiv>span {
+    margin: 0 1rem;
+}
+
+#resultDiv .larger,
+#finishDiv .larger {
+    font-size: larger;
+}
+
+#answersDiv {
+    margin: 1rem 0;
+}
+
+#answersDiv>span,
+.finalResult>span {
+    margin: 0 1rem;
+    white-space: nowrap;
+}
+
+.finalResult {
+    margin: 2rem 0;
+}
+
+.touchButtons {
+    display: flex;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+}
+
+.touchButtons>button {
+    width: 100%;
+    font-size: larger;
+    border: none;
+}
+
+.touchButtons>button.yes,
+#resultDiv span.yes {
+    background-color: #cff;
+}
+
+.touchButtons>button.no,
+#resultDiv span.no {
+    background-color: #fcc;
+}
+
+.touchButtons>button.yes:active {
+    background-color: #dff;
+}
+
+.touchButtons>button.no:active {
+    background-color: #fdd;
+}
+
+#escapeButton {
+    font-size: inherit;
+}

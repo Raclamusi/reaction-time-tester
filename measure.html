@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>計測 - 反応時間計測</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="いくつかの条件での反応時間を測定、記録します。">
+        <link rel="stylesheet" type="text/css" href="style/common.css">
+        <link rel="stylesheet" type="text/css" href="style/measure.css">
+    </head>
+    <body>
+        <main>
+            <div>
+                <h1>計測 Mode <span id="modeSpan"></span></h1>
+            </div>
+            <div id="standbyDiv">
+                <h2 id="titleH2"></h2>
+                <p id="descriptionP"></p>
+                <div>
+                    <button id="startButton">スタート！</button>
+                </div>
+            </div>
+            <div id="messageDiv" style="display: none;">
+                <div>
+                    計測中 <span id="turnSpan"></span> <button id="escapeButton">Esc</button> で中断
+                </div>
+            </div>
+            <div id="printDiv" style="display: none;">
+                <span id="printInnerDiv1"></span>
+                <span id="printInnerDiv2"></span>
+            </div>
+            <div id="resultDiv" style="display: none;">
+                <div>
+                    <span id="resultSpan" class="larger">正解！</span>
+                </div>
+                <div id="answersDiv">
+                    <span>あなたの回答：<span id="userAnswerSpan"></span></span>
+                    <span>正しい回答：<span id="correctAnswerSpan"></span></span>
+                </div>
+                <div>
+                    反応時間： <span id="reactionTimeSpan" class="larger"></span> ms
+                </div>
+            </div>
+            <div id="finishDiv" style="display: none;">
+                <h3>計測終了</h3>
+                <div class="finalResult">
+                    <span>平均反応時間： <span id="resultAverageSpan" class="larger"></span> ms</span>
+                    <span>反応時間の分散： <span id="resultVarianceSpan" class="larger"></span> ms<sup>2</sup></span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="measure.html" id="nextModeA" class="button">Mode <span id="nextModeSpan"></span> に進む</a>
+                    </li>
+                    <li>
+                        <a href="records.html" id="recordsA" class="button">記録を見る</a>
+                    </li>
+                    <li>
+                        <a href="./" class="button">トップに戻る</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="touchButtons">
+                <button id="yesButton" class="yes">Yes</button>
+                <button id="noButton" class="no">No</button>
+            </div>
+        </main>
+        <script type="module" src="script/measure.js"></script>
+    </body>
+</html>
