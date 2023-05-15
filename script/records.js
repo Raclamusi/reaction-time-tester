@@ -39,7 +39,7 @@ window.addEventListener("load", () => {
         const delimiter = delimiterRadios.find(e => e.checked).value;
         const del = (delimiter === "tab") ? "\t" : ",";
         const num = parseInt(dataNumInput.value);
-        const records = getRecords(mode).slice(0, num);
+        const records = getRecords(mode).slice(-num);
         outputTextArea.value
             = ["printed1", "printed2", "answer", "correct", "time"].join(del) + "\n"
             + records.map(data => data.join(del) + "\n").join("");
