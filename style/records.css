@@ -5,6 +5,10 @@
     border: 0.1rem solid gray;
 }
 
+.option input {
+    font-size: inherit;
+}
+
 .radioButtons>span {
     margin: 0 0.5rem;
     white-space: nowrap;
