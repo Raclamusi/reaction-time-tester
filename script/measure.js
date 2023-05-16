@@ -99,6 +99,8 @@ window.addEventListener("load", () => {
         turnSpan.textContent = `[${turn} / ${trials}]`;
         printInnerDiv1.textContent = "";
         printInnerDiv2.textContent = "";
+        printInnerDiv1.style.fontSize = `${Math.random() * 0.5 + 0.75}em`;
+        printInnerDiv2.style.fontSize = `${Math.random() * 0.5 + 0.75}em`;
         dedenSound?.play();
         timeoutId = setTimeout(() => {
             timeoutId = null;
