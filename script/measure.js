@@ -71,10 +71,10 @@ window.addEventListener("load", () => {
     const mute = getMute();
     const yesKey = getYesNoKey("yes");
     const noKey = getYesNoKey("no");
-    const dedenSound = mute ? null : new Audio("../sound/出題1.mp3");
-    const correctSound = mute ? null : new Audio("../sound/クイズ正解1.mp3");
-    const wrongSound = mute ? null : new Audio("../sound/クイズ不正解1.mp3");
-    const finishSound = mute ? null : new Audio("../sound/和太鼓でドドン.mp3");
+    const dedenSound = mute ? null : new Audio("sound/出題1.mp3");
+    const correctSound = mute ? null : new Audio("sound/クイズ正解1.mp3");
+    const wrongSound = mute ? null : new Audio("sound/クイズ不正解1.mp3");
+    const finishSound = mute ? null : new Audio("sound/和太鼓でドドン.mp3");
     
     modeSpan.textContent = mode;
     titleH2.textContent = titles[mode - 1];
