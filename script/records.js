@@ -7,6 +7,8 @@ window.addEventListener("load", () => {
     const delimiterRadios = [...document.getElementsByName("delimiter")];
     /** @type {HTMLInputElement} */
     const dataNumInput = document.getElementById("dataNumInput");
+    /** @type {HTMLInputElement} */
+    const outputHeaderCheck = document.getElementById("outputHeaderCheck");
     /** @type {HTMLSpanElement} */
     const statsAverageSpan = document.getElementById("statsAverageSpan");
     /** @type {HTMLSpanElement} */
@@ -39,9 +41,10 @@ window.addEventListener("load", () => {
         const delimiter = delimiterRadios.find(e => e.checked).value;
         const del = (delimiter === "tab") ? "\t" : ",";
         const num = parseInt(dataNumInput.value);
+        const hasHeader = outputHeaderCheck.checked;
         const records = getRecords(mode).slice(-num);
         outputTextArea.value
-            = ["printed1", "printed2", "answer", "correct", "time"].join(del) + "\n"
+            = (hasHeader ? ["printed1", "printed2", "answer", "correct", "time"].join(del) + "\n" : "")
             + records.map(data => data.join(del) + "\n").join("");
         const average = records.reduce((acc, e) => acc + e[4], 0) / records.length;
         const variance = records.reduce((acc, e) => acc + (e[4] - average) ** 2, 0) / records.length;
@@ -77,6 +80,8 @@ window.addEventListener("load", () => {
         dataNumInput.value = prevNum = num;
         update();
     });
+
+    outputHeaderCheck.addEventListener("change", () => update());
 
     copyOutputButton.addEventListener("click", async () => {
         await navigator.clipboard.writeText(outputTextArea.value);
