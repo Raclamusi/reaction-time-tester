@@ -63,7 +63,7 @@ window.addEventListener("load", () => {
         "同じ名前の文字、つまり大文字、小文字を区別せずに同じ文字が現れたときに Yes 、そうでないときに No を押します。",
         "アルファベット同士、記号同士が現れたときに Yes 、そうでないときに No を押します。",
     ];
-    const upperAlphabets = "ABDEFGHIJKLMNPQRTUY";  // 大文字と小文字の形が似ているものを除外した
+    const upperAlphabets = "ABDEFGHJKMNPQRTUY";  // 大文字と小文字の形が似ているものを除外した
     const lowerAlphabets = upperAlphabets.toLowerCase();
     const alphabets = upperAlphabets + lowerAlphabets;
     const symbols = "!#$%&";
