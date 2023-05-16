@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
     const keySetText = "Press any key...";
 
     trialsInput.value = getTrials();
-    muteInput.value = getMute();
+    muteInput.checked = getMute();
     muteSpan.textContent = muteTexts[getMute()];
     yesKeyInput.value = getYesNoKey("yes");
     noKeyInput.value = getYesNoKey("no");
