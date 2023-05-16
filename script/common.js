@@ -63,13 +63,16 @@ export function setYesNoKey(yesNo, code) {
     setItem(yesNo + "Key", code);
 }
 
+/** 計測モードモードの最大値 */
+export const modeMax = 5;
+
 /**
  * 指定した計測モードの記録を取得します。
  * @param {number} mode 計測モード
  * @returns {any[]} 計測結果の記録
  */
 export function getRecords(mode) {
-    if (mode < 1 || mode > 4) return [];
+    if (mode < 1 || mode > modeMax) return [];
     return getItem("records" + mode) ?? [];
 }
 
@@ -79,7 +82,7 @@ export function getRecords(mode) {
  * @param {any} data 追加する計測データ
  */
 export function addRecords(mode, data) {
-    if (mode < 1 || mode > 4) return;
+    if (mode < 1 || mode > modeMax) return;
     const records = getRecords(mode);
     records.push(data);
     setItem("records" + mode, records);
@@ -90,6 +93,6 @@ export function addRecords(mode, data) {
  * @param {number} mode 計測モード
  */
 export function deleteRecords(mode) {
-    if (mode < 1 || mode > 4) return;
+    if (mode < 1 || mode > modeMax) return;
     setItem("records" + mode, []);
 }

@@ -1,4 +1,4 @@
-import { addRecords, getMute, getTrials, getYesNoKey } from "./common.js";
+import { addRecords, getMute, getTrials, getYesNoKey, modeMax } from "./common.js";
 
 window.addEventListener("load", () => {
     /** @type {HTMLSpanElement} */
@@ -54,14 +54,15 @@ window.addEventListener("load", () => {
     const escapeButton = document.getElementById("escapeButton");
 
     const params = new URLSearchParams(location.search);
-    const mode = (["1", "2", "3", "4"].indexOf(params.get("mode")) + 1) || 1;
-    const nextMode = mode % 4 + 1;
-    const titles = [ "単純反応", "物理的反応", "名称照合", "カテゴリー照合" ];
+    const mode = (["1", "2", "3", "4", "5"].indexOf(params.get("mode")) + 1) || 1;
+    const nextMode = mode % modeMax + 1;
+    const titles = [ "単純反応", "物理的反応", "名称照合", "カテゴリー照合", "エクストラステージ" ];
     const descriptions = [
         "何かが現れたときに Yes 、No のいずれかを押します。",
         "同じ形の文字、つまり大文字、小文字を区別して同じ文字が現れたときに Yes 、そうでないときに No を押します。",
         "同じ名前の文字、つまり大文字、小文字を区別せずに同じ文字が現れたときに Yes 、そうでないときに No を押します。",
         "アルファベット同士、記号同士が現れたときに Yes 、そうでないときに No を押します。",
+        "現れた文字の示す色と文字色が同じときに Yes 、そうでないときに No を押します。",
     ];
     const upperAlphabets = "ABDEFGHJKMNPQRTUY";  // 大文字と小文字の形が似ているものを除外した
     const lowerAlphabets = upperAlphabets.toLowerCase();
@@ -84,6 +85,9 @@ window.addEventListener("load", () => {
     recordsA.href += `?mode=${mode}`;
     if (mode === 1) {
         answersDiv.style.display = "none";
+        printInnerDiv2.style.display = "none";
+    }
+    else if (mode === 5) {
         printInnerDiv2.style.display = "none";
     }
 
@@ -149,6 +153,20 @@ window.addEventListener("load", () => {
                     printInnerDiv2.textContent = (!isAlpha) ? choice(alphabets) : choice(symbols);
                     correctAnswer = "no";
                 }
+            }
+            else if (mode === 5) {
+                const colors = [["黒", "black"], ["赤", "red"], ["緑", "green"], ["青", "blue"]];
+                const [char, color] = choice(colors);
+                printInnerDiv1.textContent = char;
+                if (Math.random() < 0.5) {
+                    printInnerDiv1.style.color = color;
+                    correctAnswer = "yes";
+                }
+                else {
+                    printInnerDiv1.style.color = choice(colors.map(e => e[1]).filter(e => e !== color));
+                    correctAnswer = "no";
+                }
+                printInnerDiv2.textContent = printInnerDiv1.style.color;
             }
             isWaiting = true;
             printTime = performance.now();
