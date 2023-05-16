@@ -38,7 +38,7 @@ window.addEventListener("load", () => {
     /** @type {HTMLSpanElement} */
     const resultAverageSpan = document.getElementById("resultAverageSpan");
     /** @type {HTMLSpanElement} */
-    const resultVarianceSpan = document.getElementById("resultVarianceSpan");
+    const resultSDSpan = document.getElementById("resultSDSpan");
     /** @type {HTMLAnchorElement} */
     const nextModeA = document.getElementById("nextModeA");
     /** @type {HTMLSpanElement} */
@@ -187,7 +187,7 @@ window.addEventListener("load", () => {
         const average = results.reduce((acc, e) => acc + e) / results.length;
         const variance = results.reduce((acc, e) => acc + (e - average) ** 2, 0) / results.length;
         resultAverageSpan.textContent = Math.round(average * 100) / 100;
-        resultVarianceSpan.textContent = Math.round(variance * 100) / 100;
+        resultSDSpan.textContent = Math.round(Math.sqrt(variance) * 100) / 100;
         recordsA.href += `&num=${Math.max(1, results.length)}`;
         finishSound?.play();
     };

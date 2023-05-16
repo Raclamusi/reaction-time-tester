@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
     /** @type {HTMLSpanElement} */
     const statsAverageSpan = document.getElementById("statsAverageSpan");
     /** @type {HTMLSpanElement} */
-    const statsVarianceSpan = document.getElementById("statsVarianceSpan");
+    const statsSDSpan = document.getElementById("statsSDSpan");
     /** @type {HTMLButtonElement} */
     const copyOutputButton = document.getElementById("copyOutputButton");
     /** @type {HTMLTextAreaElement} */
@@ -49,7 +49,7 @@ window.addEventListener("load", () => {
         const average = records.reduce((acc, e) => acc + e[4], 0) / records.length;
         const variance = records.reduce((acc, e) => acc + (e[4] - average) ** 2, 0) / records.length;
         statsAverageSpan.textContent = Math.round(average * 100) / 100;
-        statsVarianceSpan.textContent = Math.round(variance * 100) / 100;
+        statsSDSpan.textContent = Math.round(Math.sqrt(variance) * 100) / 100;
     };
     update();
 
