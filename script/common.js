@@ -96,3 +96,36 @@ export function deleteRecords(mode) {
     if (mode < 1 || mode > modeMax) return;
     setItem("records" + mode, []);
 }
+
+/**
+ * 記録の出力に使用する区切り文字を取得します。
+ * @returns {"comma" | "tab"} 区切り文字
+ */
+export function getDelimiter() {
+    return getItem("delimiter") ?? "comma";
+}
+
+/**
+ * 記録の出力に使用する区切り文字を設定します。
+ * @param {"comma" | "tab"} del 区切り文字
+ */
+export function setDelimiter(del) {
+    if (del !== "comma" && del !== "tab") return;
+    setItem("delimiter", del);
+}
+
+/**
+ * 記録の出力にヘッダをつけるかどうかを取得します。
+ * @returns {boolean} ヘッダを出力するかどうか
+ */
+export function getRecordHeader() {
+    return getItem("recordHeader") ?? true;
+}
+
+/**
+ * 記録の出力にヘッダをつけるかどうかを設定します。
+ * @param {boolean} hasHeader ヘッダを出力するかどうか
+ */
+export function setRecordHeader(hasHeader) {
+    setItem("recordHeader", hasHeader);
+}

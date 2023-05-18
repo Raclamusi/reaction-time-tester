@@ -1,4 +1,4 @@
-import { deleteRecords, getRecords } from "./common.js";
+import { deleteRecords, getDelimiter, getRecordHeader, getRecords, setDelimiter, setRecordHeader } from "./common.js";
 
 window.addEventListener("load", () => {
     /** @type {HTMLInputElement[]} */
@@ -31,9 +31,18 @@ window.addEventListener("load", () => {
         const button = delimiterRadios.find(e => e.value === del);
         if (button) button.checked = true;
     }
+    else {
+        const del = getDelimiter();
+        const button = delimiterRadios.find(e => e.value === del);
+        if (button) button.checked = true;
+    }
     if (params.has("num")) {
         const num = parseInt(params.get("num"));
         if (!isNaN(num) && num > 0) dataNumInput.value = num;
+    }
+    {
+        const hasHeader = getRecordHeader();
+        outputHeaderCheck.checked = hasHeader;
     }
 
     const update = () => {
@@ -64,6 +73,7 @@ window.addEventListener("load", () => {
     for (const button of delimiterRadios) {
         button.addEventListener("change", () => {
             if (button.checked) {
+                setDelimiter(button.value);
                 update();
             }
         });
@@ -81,7 +91,10 @@ window.addEventListener("load", () => {
         update();
     });
 
-    outputHeaderCheck.addEventListener("change", () => update());
+    outputHeaderCheck.addEventListener("change", () => {
+        setRecordHeader(outputHeaderCheck.checked);
+        update();
+    });
 
     copyOutputButton.addEventListener("click", async () => {
         await navigator.clipboard.writeText(outputTextArea.value);
