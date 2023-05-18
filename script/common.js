@@ -115,6 +115,24 @@ export function setDelimiter(del) {
 }
 
 /**
+ * 出力する記録のデータ数を取得します。
+ * @returns {number} データ数
+ */
+export function getDataNum() {
+    return getItem("dataNum") ?? 100;
+}
+
+/**
+ * 出力する記録のデータ数を設定します。
+ * @param {number} num データ数
+ */
+export function setDataNum(num) {
+    if (!isNaN(num)) {
+        setItem("dataNum", Math.max(1, num));
+    }
+}
+
+/**
  * 記録の出力にヘッダをつけるかどうかを取得します。
  * @returns {boolean} ヘッダを出力するかどうか
  */

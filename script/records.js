@@ -1,4 +1,4 @@
-import { deleteRecords, getDelimiter, getRecordHeader, getRecords, setDelimiter, setRecordHeader } from "./common.js";
+import { deleteRecords, getDataNum, getDelimiter, getRecordHeader, getRecords, setDataNum, setDelimiter, setRecordHeader } from "./common.js";
 
 window.addEventListener("load", () => {
     /** @type {HTMLInputElement[]} */
@@ -40,6 +40,10 @@ window.addEventListener("load", () => {
         const num = parseInt(params.get("num"));
         if (!isNaN(num) && num > 0) dataNumInput.value = num;
     }
+    else {
+        const num = getDataNum();
+        dataNumInput.value = num;
+    }
     {
         const hasHeader = getRecordHeader();
         outputHeaderCheck.checked = hasHeader;
@@ -79,15 +83,9 @@ window.addEventListener("load", () => {
         });
     }
 
-    let prevNum = parseInt(dataNumInput.value);
     dataNumInput.addEventListener("change", () => {
-        const num = Math.max(1, parseInt(dataNumInput.value));
-        if (isNaN(num)) {
-            dataNumInput.value = prevNum;
-            return;
-        }
-        if (num === prevNum) return;
-        dataNumInput.value = prevNum = num;
+        setDataNum(parseInt(dataNumInput.value));
+        dataNumInput.value = getDataNum();
         update();
     });
 
